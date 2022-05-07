@@ -31,7 +31,7 @@ class TokenController extends Controller
         $token->department_id = $department->id;
         $token->save();
 
-        return redirect()->route('admin.token.index')->with('success', 'Token Generated Successfully');
+        return view('admin.dashboard.token.print', compact('token', 'department'));
     }
 
     /**
