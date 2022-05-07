@@ -2,6 +2,7 @@
 
 namespace App\Console\Commands;
 
+use App\Models\Department;
 use App\Models\User;
 use Illuminate\Console\Command;
 
@@ -43,11 +44,6 @@ class Clean extends Command
         $this->call('route:clear');
         $this->call('cache:clear');
         $this->call('config:clear');
-        $this->call('clear-compiled');
-        $this->call('optimize');
-        $this->call('route:cache');
-        $this->call('config:cache');
-        $this->call('view:cache');
 
         $user = new User();
         $user->name = 'admin';
@@ -55,6 +51,26 @@ class Clean extends Command
         $user->password = bcrypt('asdfasdf');
         $user->role = 'admin';
         $user->save();
+
+        $department = new Department();
+        $department->name = 'Insurance';
+        $department->description = 'Insurance Department';
+        $department->save();
+
+        $department = new Department();
+        $department->name = 'HR';
+        $department->description = 'HR Department';
+        $department->save();
+
+        $department = new Department();
+        $department->name = 'Finance';
+        $department->description = 'Finance Department';
+        $department->save();
+
+        $department = new Department();
+        $department->name = 'IT';
+        $department->description = 'IT Department';
+        $department->save();
         return 0;
     }
 }
