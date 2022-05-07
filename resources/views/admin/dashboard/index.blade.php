@@ -15,42 +15,39 @@
 
                     <div class="row">
                         <div class="col-lg-6">
-                            <!-- Card -->
-                            <a class="card card-dashed card-centered" href="javascript:;" data-bs-toggle="modal"
-                                data-bs-target="#accountAddCardModal">
-                                <div class="card-body card-dashed-body py-8">
-                                    <img class="avatar avatar-lg avatar-4x3 mb-2"
-                                        src="/assets/svg/illustrations/oc-add-card.svg" alt="Image Description"
-                                        data-hs-theme-appearance="default">
-                                    <img class="avatar avatar-lg avatar-4x3 mb-2"
-                                        src="/assets/svg/illustrations-light/oc-add-card.svg" alt="Image Description"
-                                        data-hs-theme-appearance="dark">
-                                    <span><i class="bi-dash"></i> You Gave</span>
+                            <div class="card h-100">
+                                <div class="card-body">
+                                    <h6 class="card-subtitle mb-2">Total Employees</h6>
+
+                                    <div class="row align-items-center gx-2">
+                                        <div class="col">
+                                            <span class="js-counter display-4 text-dark"
+                                                data-value="{{ $employees->count() }}">{{ $employees->count() }}</span>
+                                        </div>
+                                        <!-- End Col -->
+                                    </div>
+                                    <!-- End Row -->
                                 </div>
-                            </a>
-                            <!-- End Card -->
+                            </div>
                         </div>
                         <div class="col-lg-6">
-                            <!-- Card -->
-                            <a class="card card-dashed card-centered" href="javascript:;" data-bs-toggle="modal"
-                                data-bs-target="#accountAddCardModal">
-                                <div class="card-body card-dashed-body py-8">
-                                    <img class="avatar avatar-lg avatar-4x3 mb-2"
-                                        src="/assets/svg/illustrations/oc-add-card.svg" alt="Image Description"
-                                        data-hs-theme-appearance="default">
-                                    <img class="avatar avatar-lg avatar-4x3 mb-2"
-                                        src="/assets/svg/illustrations-light/oc-add-card.svg" alt="Image Description"
-                                        data-hs-theme-appearance="dark">
-                                    <span><i class="bi-plus"></i> You Got</span>
+                            <div class="card h-100">
+                                <div class="card-body">
+                                    <h6 class="card-subtitle mb-2">Total Departments</h6>
+
+                                    <div class="row align-items-center gx-2">
+                                        <div class="col">
+                                            <span class="js-counter display-4 text-dark"
+                                                data-value="{{ $departments->count() }}">{{ $departments->count() }}</span>
+                                        </div>
+                                        <!-- End Col -->
+                                    </div>
+                                    <!-- End Row -->
                                 </div>
-                            </a>
-                            <!-- End Card -->
+                            </div>
                         </div>
-                        <!-- End Col -->
                     </div>
-                    <!-- End Row -->
                 </div>
-                <!-- End Body -->
             </div>
         </div>
     </div>
