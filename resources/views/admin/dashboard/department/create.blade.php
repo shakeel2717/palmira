@@ -34,7 +34,7 @@
                         </div>
                         <hr>
                         <div class="form-group text-end mb-2">
-                            <input type="submit" class="btn btn-primary" value="Add new Customer">
+                            <input type="submit" class="btn btn-primary" value="Add new Department">
                         </div>
                     </form>
                 </div>

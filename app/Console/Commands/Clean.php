@@ -52,6 +52,14 @@ class Clean extends Command
         $user->role = 'admin';
         $user->save();
 
+
+        $user = new User();
+        $user->name = 'shakeel ahmad';
+        $user->email = 'shakeel2717@gmail.com';
+        $user->password = bcrypt('asdfasdf');
+        $user->role = 'user';
+        $user->save();
+
         $department = new Department();
         $department->name = 'Insurance';
         $department->description = 'Insurance Department';
