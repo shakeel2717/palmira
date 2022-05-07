@@ -3,6 +3,7 @@
 namespace App\Console\Commands;
 
 use App\Models\Department;
+use App\Models\options;
 use App\Models\User;
 use Illuminate\Console\Command;
 
@@ -79,6 +80,11 @@ class Clean extends Command
         $department->name = 'IT';
         $department->description = 'IT Department';
         $department->save();
+
+        $option = new options();
+        $option->name = 'token_length';
+        $option->value = 0;
+        $option->save();
         return 0;
     }
 }

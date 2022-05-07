@@ -1,17 +1,16 @@
 <?php
 // generating 6 digit unique user code
 
+use App\Models\admin\Token;
+use App\Models\options;
 use App\Models\User;
 use App\Models\user\Customer;
 
-function generate_user_code($userType)
+function generate_token()
 {
-    $rand = rand(10000000, 99999999);
-    $code = $userType . $rand;
-    $user = User::where('code', $code)->first();
-    if ($user) {
-        generate_user_code($userType);
-    } else {
-        return $code;
-    }
+    $option = options::where('name', 'token_length')->first();
+    $option->value = $option->value + 1;
+    $length = $option->value;
+    $option->save();
+    return sprintf('%05d', $length++);
 }

@@ -315,7 +315,6 @@
                             </div>
                         </div>
 
-
                         <div class="nav-item">
                             <a class="nav-link dropdown-toggle " href="#navEmployee" role="button"
                                 data-bs-toggle="collapse" data-bs-target="#navEmployee" aria-expanded="false"
@@ -328,6 +327,30 @@
                                 <a class="nav-link " href="{{ route('admin.employee.index') }}">All Employee</a>
                             </div>
                         </div>
+
+
+                        <div class="nav-item">
+                            <a class="nav-link dropdown-toggle " href="#navToken" role="button"
+                                data-bs-toggle="collapse" data-bs-target="#navToken" aria-expanded="false"
+                                aria-controls="navToken">
+                                <i class="bi-house-door nav-icon"></i>
+                                <span class="nav-link-title">Token</span>
+                            </a>
+
+                            <div id="navToken" class="nav-collapse collapse" data-bs-parent="#navbarVerticalMenu">
+                                <a class="nav-link " href="{{ route('admin.token.index') }}">All Tokens</a>
+                            </div>
+                            <div id="navToken" class="nav-collapse collapse" data-bs-parent="#navbarVerticalMenu">
+                                <a class="nav-link " href="{{ route('admin.token.create') }}">Generate Token</a>
+                            </div>
+                        </div>
+
+                        {{-- <div class="nav-item">
+                            <a class="nav-link " href="{{ route('admin.token.create') }}" data-placement="left">
+                                <i class="bi-key nav-icon"></i>
+                                <span class="nav-link-title">Generate Token</span>
+                            </a>
+                        </div> --}}
                         <!-- End Collapse -->
                     </div>
 

@@ -4,13 +4,13 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header border-bottom">
-                    <h4 class="card-header-title">Finance Management</h4>
+                    <h4 class="card-header-title">{{ env('APP_NAME') }}</h4>
                 </div>
 
                 <!-- Body -->
                 <div class="card-body">
                     <div class="mb-4">
-                        <p>Add Transaction in to System.</p>
+                        <p>{{ env('APP_DESC') }}</p>
                     </div>
 
                     <div class="row">
