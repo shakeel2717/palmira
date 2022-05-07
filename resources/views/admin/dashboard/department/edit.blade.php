@@ -20,21 +20,22 @@
         <div class="col-md-8">
             <div class="card">
                 <div class="card-body">
-                    <form action="{{ route('admin.department.store') }}" method="POST">
+                    <form action="{{ route('admin.department.update',['department' => $department->id]) }}" method="POST">
                         @csrf
+                        @method('PUT')
                         <div class="form-group text-start mb-2">
                             <label for="name" class="mb-2">Department Name</label>
                             <input type="text" class="form-control" id="name" name="name"
-                                placeholder="Enter Department name">
+                                placeholder="Enter Department name" value="{{ $department->name }}">
                         </div>
                         <div class="form-group text-start mb-2">
                             <label for="description" class="mb-2">Department Description</label>
                             <input type="text" class="form-control" id="description" name="description"
-                                placeholder="Enter Department Description">
+                                placeholder="Enter Department Description" value="{{ $department->description }}">
                         </div>
                         <hr>
                         <div class="form-group text-end mb-2">
-                            <input type="submit" class="btn btn-primary" value="Add new Customer">
+                            <input type="submit" class="btn btn-primary" value="Update Department">
                         </div>
                     </form>
                 </div>

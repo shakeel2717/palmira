@@ -59,7 +59,8 @@ class DepartmentController extends Controller
      */
     public function edit($id)
     {
-        //
+        $department = Department::find($id);
+        return view('admin.dashboard.department.edit',compact('department'));
     }
 
     /**
@@ -71,7 +72,16 @@ class DepartmentController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $validatedData = $request->validate([
+            'name' => 'required|string|max:255',
+            'description' => 'required|string|max:255',
+        ]);
+        $department = Department::find($id);
+        $department->name = $request->name;
+        $department->description = $request->description;
+        $department->save();
+
+        return redirect()->back()->with('success','Department Updated Successfully');
     }
 
     /**

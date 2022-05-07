@@ -132,7 +132,7 @@
                                     <td>
                                         <div class="ms-3">
                                             <span class="d-block h5 text-inherit mb-0"><a
-                                                    href="{{ route('admin.department.show', ['department' => $department->id]) }}">{{ $department->name }}</a>
+                                                    href="{{ route('admin.department.edit', ['department' => $department->id]) }}">{{ $department->name }}</a>
                                             </span>
                                         </div>
                                     </td>
