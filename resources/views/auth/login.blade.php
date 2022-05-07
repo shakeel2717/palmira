@@ -3,50 +3,60 @@
     Login Page
 @endsection
 @section('form')
-    <form class="js-validate" method="POST" action="{{ route('login') }}">
-        @csrf
-        <div class="text-center">
-            <div class="mb-5">
-                <h1 class="display-4">Sign in</h1>
-                <p>Don't have an account yet? <a href="{{ route('register') }}">Sign up
-                        here</a></p>
-            </div>
-            <div class="row">
-                <div class="col-6">
-                    <a class="btn btn-lg btn-block btn-white mb-4" href="{{ route('login.google') }}">
-                        <span class="d-flex justify-content-center align-items-center">
-                            <img class="avatar avatar-xs mr-2" src="{{ asset('assets/svg/brands/google.svg') }}"
-                                alt="Image Description">
-                            Via Google
-                        </span>
-                    </a>
+    <div class="card card-lg mb-5">
+        <div class="card-body">
+            <!-- Form -->
+            <form method="POST" action="{{ route('login') }}">
+                @csrf
+                <!-- Form -->
+                <div class="mb-4">
+                    <label class="form-label" for="signinSrEmail">Your email</label>
+                    <input type="email" class="form-control form-control-lg" name="email" id="signinSrEmail" tabindex="1"
+                        placeholder="email@address.com" aria-label="email@address.com" required>
+                    <span class="invalid-feedback">Please enter a valid email address.</span>
                 </div>
-                <div class="col-6">
-                    <a class="btn btn-lg btn-block btn-white mb-4" href="{{ route('login.facebook') }}">
-                        <span class="d-flex justify-content-center align-items-center">
-                            <img class="avatar avatar-xs mr-2" src="{{ asset('assets/svg/brands/facebook.svg') }}"
-                                alt="Image Description">
-                            Via Facebook
+                <!-- End Form -->
+
+                <!-- Form -->
+                <div class="mb-4">
+                    <label class="form-label w-100" for="signupSrPassword" tabindex="0">
+                        <span class="d-flex justify-content-between align-items-center">
+                            <span>Password</span>
                         </span>
-                    </a>
+                    </label>
+
+                    <div class="input-group input-group-merge" data-hs-validation-validate-class>
+                        <input type="password" class="js-toggle-password form-control form-control-lg" name="password"
+                            id="signupSrPassword" placeholder="8+ characters required" aria-label="8+ characters required"
+                            required minlength="8" data-hs-toggle-password-options='{
+                       "target": "#changePassTarget",
+                       "defaultClass": "bi-eye-slash",
+                       "showClass": "bi-eye",
+                       "classChangeTarget": "#changePassIcon"
+                     }'>
+                        <a id="changePassTarget" class="input-group-append input-group-text" href="javascript:;">
+                            <i id="changePassIcon" class="bi-eye"></i>
+                        </a>
+                    </div>
+
+                    <span class="invalid-feedback">Please enter a valid password.</span>
                 </div>
-            </div>
+                <!-- End Form -->
 
+                <!-- Form Check -->
+                <div class="form-check mb-4">
+                    <input class="form-check-input" type="checkbox" value="" id="termsCheckbox">
+                    <label class="form-check-label" for="termsCheckbox">
+                        Remember me
+                    </label>
+                </div>
+                <!-- End Form Check -->
 
-            <span class="divider text-muted mb-4">OR</span>
+                <div class="d-grid">
+                    <button type="submit" class="btn btn-primary btn-lg">Sign in</button>
+                </div>
+            </form>
+            <!-- End Form -->
         </div>
-        <x-input name="email" type="email" placeholder="Enter Email." value="{{ old('email') }}" />
-        <x-input name="password" type="password" placeholder="Type Password." />
-
-        <div class="form-group">
-            <div class="custom-control custom-checkbox">
-                <input type="checkbox" class="custom-control-input" id="termsCheckbox" name="remember">
-                <label class="custom-control-label text-muted" for="termsCheckbox"> Remember
-                    me</label>
-            </div>
-        </div>
-        <button type="submit" class="btn btn-lg btn-block btn-primary">Sign in</button>
-        <hr>
-        <p>Forgot Password? <a href="{{ route('password.request') }}">Click to Reset</a></p>
-    </form>
+    </div>
 @endsection
