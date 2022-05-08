@@ -19,7 +19,7 @@ class TokenController extends Controller
      */
     public function index()
     {
-        $tokens = Token::get();
+        $tokens = Token::latest()->get();
         return view('admin.dashboard.token.index', compact('tokens'));
     }
 
@@ -51,7 +51,18 @@ class TokenController extends Controller
                     return redirect()->back()->withErrors('No user found in this counter');
                 }
             } elseif ($countDepart->counter->status == 'busy') {
-                return redirect()->back()->withErrors('This Employee Already busy in another Token');
+                // putting this counter in the queue
+                $userCounter = User::where('counter', $countDepart->counter->id)->first();
+                if ($userCounter) {
+                    // free active counter found
+                    // assign this token to this counter
+                    $token->counter_id = $countDepart->counter->id;
+                    $token->status = 'queue';
+                    $token->save();
+                    break;
+                } else {
+                    return redirect()->back()->withErrors('No user found in this counter');
+                }
             }
         }
 

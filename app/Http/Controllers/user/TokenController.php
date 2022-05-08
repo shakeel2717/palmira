@@ -65,6 +65,16 @@ class TokenController extends Controller
 
         $counter = Counter::find(auth()->user()->counter);
         $counter->status = 'active';
+
+        // checking if there's any other token into queue
+        $tokens = Token::where('counter_id', auth()->user()->counter)->where('status', 'queue')->first();
+        if ($tokens) {
+            $counter->status = 'busy';
+            $token = Token::find($tokens->id);
+            $token->status = 'open';
+            $token->save();
+        }
+
         $counter->save();
 
         return redirect()->back()->with('success', 'Token has been Completed successfully');
