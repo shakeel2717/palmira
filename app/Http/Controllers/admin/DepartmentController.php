@@ -26,7 +26,7 @@ class DepartmentController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.dashboard.department.create');
     }
 
     /**
@@ -37,7 +37,25 @@ class DepartmentController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validatedData = $request->validate([
+            'name' => 'required|unique:departments',
+            'description' => 'required',
+            'image' => 'required|image|mimes:jpeg,png,jpg,svg|max:2048',
+        ]);
+
+        $image = $request->file('image');
+        $image_name = time() . '.' . $image->getClientOriginalExtension();
+        $destinationPath = public_path('/departments');
+        $image->move($destinationPath, $image_name);
+
+        $department = new Department();
+        $department->name = $validatedData['name'];
+        $department->description = $validatedData['description'];
+        $department->image = $image_name;
+        $department->save();
+
+        return redirect()->route('admin.department.index')->with('success','Department created successfully');
+
     }
 
     /**

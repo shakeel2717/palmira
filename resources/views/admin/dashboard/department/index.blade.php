@@ -121,6 +121,7 @@
                             }'>
                         <thead class="thead-light">
                             <tr>
+                                <th>Image</th>
                                 <th>Name</th>
                                 <th>Description</th>
                             </tr>
@@ -129,6 +130,7 @@
                         <tbody>
                             @foreach ($departments as $department)
                                 <tr>
+                                    <td><img src="{{ asset('departments/'.$department->image) }}" alt="Department Image" width="100"></td>
                                     <td>
                                         <div class="ms-3">
                                             <span class="d-block h5 text-inherit mb-0"><a

@@ -20,7 +20,7 @@
         <div class="col-md-8">
             <div class="card">
                 <div class="card-body">
-                    <form action="{{ route('admin.department.store') }}" method="POST">
+                    <form action="{{ route('admin.department.store') }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         <div class="form-group text-start mb-2">
                             <label for="name" class="mb-2">Department Name</label>
@@ -31,6 +31,10 @@
                             <label for="description" class="mb-2">Department Description</label>
                             <input type="text" class="form-control" id="description" name="description"
                                 placeholder="Enter Department Description">
+                        </div>
+                        <div class="form-group text-start mb-2">
+                            <label for="image" class="mb-2">Upload Department Image</label>
+                            <input type="file" class="form-control" id="image" name="image">
                         </div>
                         <hr>
                         <div class="form-group text-end mb-2">

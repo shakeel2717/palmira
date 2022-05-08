@@ -54,33 +54,6 @@ class Clean extends Command
         $user->save();
 
 
-        $user = new User();
-        $user->name = 'shakeel ahmad';
-        $user->email = 'shakeel2717@gmail.com';
-        $user->password = bcrypt('asdfasdf');
-        $user->role = 'user';
-        $user->save();
-
-        $department = new Department();
-        $department->name = 'Insurance';
-        $department->description = 'Insurance Department';
-        $department->save();
-
-        $department = new Department();
-        $department->name = 'HR';
-        $department->description = 'HR Department';
-        $department->save();
-
-        $department = new Department();
-        $department->name = 'Finance';
-        $department->description = 'Finance Department';
-        $department->save();
-
-        $department = new Department();
-        $department->name = 'IT';
-        $department->description = 'IT Department';
-        $department->save();
-
         $option = new options();
         $option->name = 'token_length';
         $option->value = 0;

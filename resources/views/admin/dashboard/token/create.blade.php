@@ -19,13 +19,7 @@
                                 <div class="card-body">
                                     <div class="d-flex align-items-center">
                                         <div class="flex-shrink-0">
-                                            <img class="avatar avatar-lg avatar-4x3"
-                                                src="/assets/svg/illustrations/oc-megaphone.svg" alt="Image Description"
-                                                style="min-height: 5rem;" data-hs-theme-appearance="default">
-                                            <img class="avatar avatar-lg avatar-4x3"
-                                                src="/assets/svg/illustrations-light/oc-megaphone.svg"
-                                                alt="Image Description" style="min-height: 5rem;"
-                                                data-hs-theme-appearance="dark">
+                                            <img src="{{ asset('departments/'.$department->image) }}" alt="Department Image" width="100">
                                         </div>
 
                                         <div class="flex-grow-1 ms-4">
