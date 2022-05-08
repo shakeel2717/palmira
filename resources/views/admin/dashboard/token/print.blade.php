@@ -66,6 +66,7 @@
 
         .display-1 {
             font-size: 6rem;
+            line-height: 5px;
         }
 
     </style>
