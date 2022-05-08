@@ -47,7 +47,13 @@
                             </select>
                         </div>
                         <div class="form-group text-start mb-2">
-                            <label for="password" class="mb-2">User Control</label>
+                            <label for="password" class="mb-2">User Controls:
+                                @forelse ($departmentControl as $control)
+                                   <b>{{ $control->department->name }},</b>
+                                @empty
+                                    No Control for this user!
+                                @endforelse
+                            </label>
                             <div class="row gx-3">
                                 <!-- Check -->
                                 @foreach ($departments as $department)
@@ -59,7 +65,7 @@
                                             <img class="form-check-img" src="{{ asset('departments/' . $department->image) }}"
                                                 alt="Image Description">
                                         </label>
-                                        <span class="form-check-text">Light</span>
+                                        <span class="form-check-text">{{ $department->name }}</span>
                                     </div>
                                 </div>
                                 @endforeach

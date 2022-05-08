@@ -93,7 +93,8 @@ class EmployeeController extends Controller
     {
         $employee = User::find($id);
         $departments = Department::get();
-        return view('admin.dashboard.employee.edit', compact('employee', 'departments'));
+        $departmentControl = DepartmentControl::where('user_id', $id)->get();
+        return view('admin.dashboard.employee.edit', compact('employee', 'departments', 'departmentControl'));
     }
 
     /**

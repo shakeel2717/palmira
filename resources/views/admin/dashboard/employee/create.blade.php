@@ -57,7 +57,7 @@
                                             <img class="form-check-img" src="{{ asset('departments/' . $department->image) }}"
                                                 alt="Image Description">
                                         </label>
-                                        <span class="form-check-text">Light</span>
+                                        <span class="form-check-text">{{ $department->name }}</span>
                                     </div>
                                 </div>
                                 @endforeach

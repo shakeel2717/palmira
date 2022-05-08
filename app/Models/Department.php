@@ -14,4 +14,9 @@ class Department extends Model
     {
         return $this->hasMany(Token::class);
     }
+
+    public function departmentControl()
+    {
+        return $this->hasMany(DepartmentControl::class);
+    }
 }
