@@ -30,9 +30,16 @@ class TokenController extends Controller
         $token->token = generate_token();
         $token->department_id = $department->id;
         // checking all counters in this department
-        $counters = Counter::where('department_id', $department->id)->first();
-        $token->counter_id = $counters->id;
-        $token->save();
+        $counters = Counter::where('department_id', $department->id)->where('status','active')->first();
+        if ($counters == null) {
+            $token->status = 'waiting';
+            $token->save();
+        } else {
+            $token->counter_id = $counters->id;
+            $token->save();
+            $counters->status = "busy";
+            $counters->save();
+        }
 
         return view('admin.dashboard.token.print', compact('token', 'department'));
     }

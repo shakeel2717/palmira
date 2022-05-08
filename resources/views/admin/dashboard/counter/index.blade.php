@@ -3,13 +3,13 @@
     <div class="page-header">
         <div class="row align-items-center">
             <div class="col">
-                <h1 class="page-header-title">All Department List</h1>
+                <h1 class="page-header-title">All Counter List</h1>
             </div>
             <!-- End Col -->
 
             <div class="col-auto">
-                <a class="btn btn-primary" href="{{ route('admin.department.create') }}">
-                    <i class="bi-person-plus-fill me-1"></i> Add Department
+                <a class="btn btn-primary" href="{{ route('admin.counter.create') }}">
+                    <i class="bi-person-plus-fill me-1"></i> Add Counter
                 </a>
             </div>
             <!-- End Col -->
@@ -22,7 +22,7 @@
                 <div class="card-header">
                     <div class="row justify-content-between align-items-center flex-grow-1">
                         <div class="col-md">
-                            <h4 class="card-header-title text-start">All Departments</h4>
+                            <h4 class="card-header-title text-start">All Counters</h4>
                         </div>
 
                         <div class="col-auto">
@@ -121,24 +121,26 @@
                                 }'>
                         <thead class="thead-light">
                             <tr>
-                                <th>Department</th>
                                 <th>Name</th>
+                                <th>Department</th>
                                 <th>Description</th>
+                                <th>Status</th>
                             </tr>
                         </thead>
 
                         <tbody>
                             @foreach ($counters as $counter)
                                 <tr>
-                                    <td class="text-uppercase">{{ $counter->department->name }}</td>
                                     <td>
                                         <div class="ms-3">
                                             <span class="d-block h5 text-inherit mb-0"><a
-                                                    href="{{ route('admin.counter.edit', ['counter' => $counter->id]) }}">{{ $counter->name }}</a>
+                                                href="{{ route('admin.counter.edit', ['counter' => $counter->id]) }}">{{ $counter->name }}</a>
                                             </span>
                                         </div>
                                     </td>
+                                    <td class="text-uppercase">{{ $counter->department->name }}</td>
                                     <td>{{ $counter->description }}</td>
+                                    <td class="text-uppercase">{{ $counter->status }}</td>
                                 </tr>
                             @endforeach
                         </tbody>

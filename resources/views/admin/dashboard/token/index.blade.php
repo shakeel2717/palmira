@@ -138,7 +138,7 @@
                                             </span>
                                         </div>
                                     </td>
-                                    <td>{{ $token->counter->name }}</td>
+                                    <td>{{ $token->counter->name ?? "Waiting List" }}</td>
                                     <td>{{ $token->department->name }}</td>
                                     <td class="text-uppercase">{{ $token->status }}</td>
                                 </tr>
