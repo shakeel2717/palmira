@@ -24,7 +24,7 @@
                                                 <h3 class="text-white mb-1">Counter: {{ $counter->name }}</h3>
                                             </div>
                                             <div class="flex-grow-2 ms-4">
-                                                <h3 class="text-white mb-1">Token: </h3>
+                                                <h3 class="text-white mb-1">Token: {{ $counter->tokens->token }}</h3>
                                             </div>
                                         </div>
                                     </div>

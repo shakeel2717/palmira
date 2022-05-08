@@ -94,15 +94,17 @@ class TokenController extends Controller
     public function update(Request $request, $id)
     {
         $validatedData = $request->validate([
-            'token' => 'required|unique:tokens',
+            'token' => 'required|unique:tokens,token,'.$id,
             'department_id' => 'required',
             'status' => 'required',
+            'counter_id' => 'required',
         ]);
 
         $token = Token::find($id);
         $token->token = $validatedData['token'];
         $token->department_id = $request->department_id;
         $token->status = $validatedData['status'];
+        $token->counter_id = $validatedData['counter_id'];
         $token->save();
 
         return redirect()->route('admin.token.index')->with('success', 'Token updated successfully');

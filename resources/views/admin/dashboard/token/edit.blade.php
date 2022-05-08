@@ -9,7 +9,7 @@
 
             <div class="col-auto">
                 <a class="btn btn-primary" href="{{ route('admin.token.index') }}">
-                    <i class="bi-person-fill me-1"></i> All Customer
+                    <i class="bi-person-fill me-1"></i> All Token
                 </a>
             </div>
             <!-- End Col -->

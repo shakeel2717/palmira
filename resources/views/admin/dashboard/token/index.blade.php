@@ -3,13 +3,13 @@
     <div class="page-header">
         <div class="row align-items-center">
             <div class="col">
-                <h1 class="page-header-title">All Employees List</h1>
+                <h1 class="page-header-title">All Token List</h1>
             </div>
             <!-- End Col -->
 
             <div class="col-auto">
-                <a class="btn btn-primary" href="{{ route('admin.employee.create') }}">
-                    <i class="bi-person-plus-fill me-1"></i> Add Employee
+                <a class="btn btn-primary" href="{{ route('admin.token.create') }}">
+                    <i class="bi-person-plus-fill me-1"></i> Add Token
                 </a>
             </div>
             <!-- End Col -->
@@ -22,7 +22,7 @@
                 <div class="card-header">
                     <div class="row justify-content-between align-items-center flex-grow-1">
                         <div class="col-md">
-                            <h4 class="card-header-title text-start">All Employees</h4>
+                            <h4 class="card-header-title text-start">All Token</h4>
                         </div>
 
                         <div class="col-auto">
