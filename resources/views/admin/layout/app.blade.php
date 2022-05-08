@@ -374,6 +374,20 @@
                             </div>
                         </div>
 
+
+                        <div class="nav-item">
+                            <a class="nav-link dropdown-toggle " href="#navDisplay" role="button"
+                                data-bs-toggle="collapse" data-bs-target="#navDisplay" aria-expanded="false"
+                                aria-controls="navDisplay">
+                                <i class="bi-house-door nav-icon"></i>
+                                <span class="nav-link-title">Display</span>
+                            </a>
+
+                            <div id="navDisplay" class="nav-collapse collapse" data-bs-parent="#navbarVerticalMenu">
+                                <a class="nav-link " href="{{ route('admin.display.index') }}">Display</a>
+                            </div>
+                        </div>
+
                         {{-- <div class="nav-item">
                             <a class="nav-link " href="{{ route('admin.token.create') }}" data-placement="left">
                                 <i class="bi-key nav-icon"></i>
