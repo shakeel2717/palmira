@@ -226,8 +226,8 @@
                                                 alt="Image Description">
                                         </div>
                                         <div class="flex-grow-1 ms-3">
-                                            <h5 class="mb-0">Mark Williams</h5>
-                                            <p class="card-text text-body">mark@site.com</p>
+                                            <h5 class="mb-0">{{ auth()->user()->name }}</h5>
+                                            <p class="card-text text-body">{{ auth()->user()->email }}</p>
                                         </div>
                                     </div>
                                 </div>
@@ -238,8 +238,11 @@
                                 <a class="dropdown-item" href="#">Settings</a>
 
                                 <div class="dropdown-divider"></div>
-
-                                <a class="dropdown-item" href="#">Sign out</a>
+                                <form action="{{ route('logout') }}" method="POST">
+                                    @csrf
+                                    <button class="dropdown-item" type="submit">Sign out</button>
+                                </form>
+                                {{-- <a class="dropdown-item" href="#">Sign out</a> --}}
                             </div>
                         </div>
                     </li>
@@ -300,24 +303,12 @@
                         <span class="dropdown-header mt-4">Pages</span>
                         <small class="bi-three-dots nav-subtitle-replacer"></small>
 
-                        <!-- Collapse -->
-                        <div class="nav-item">
-                            <a class="nav-link dropdown-toggle " href="#navCustomers" role="button"
-                                data-bs-toggle="collapse" data-bs-target="#navCustomers"
-                                aria-expanded="false" aria-controls="navCustomers">
-                                <i class="bi-house-door nav-icon"></i>
-                                <span class="nav-link-title">Customers</span>
+                        {{-- <div class="nav-item">
+                            <a class="nav-link " href="{{ route('admin.token.create') }}" data-placement="left">
+                                <i class="bi-key nav-icon"></i>
+                                <span class="nav-link-title">Generate Token</span>
                             </a>
-
-                            <div id="navCustomers" class="nav-collapse collapse"
-                                data-bs-parent="#navbarVerticalMenu">
-                                <a class="nav-link " href="{{ route('user.customer.index') }}">All Customers</a>
-                            </div>
-                            <div id="navCustomers" class="nav-collapse collapse"
-                                data-bs-parent="#navbarVerticalMenu">
-                                <a class="nav-link " href="{{ route('user.customer.create') }}">Add new Customers</a>
-                            </div>
-                        </div>
+                        </div> --}}
                         <!-- End Collapse -->
                     </div>
 

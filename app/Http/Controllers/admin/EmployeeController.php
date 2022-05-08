@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\admin\Counter;
 use App\Models\admin\DepartmentControl;
 use App\Models\Department;
 use App\Models\User;
@@ -30,7 +31,8 @@ class EmployeeController extends Controller
     public function create()
     {
         $departments = Department::get();
-        return view('admin.dashboard.employee.create', compact('departments'));
+        $counters = Counter::get();
+        return view('admin.dashboard.employee.create', compact('departments'), compact('counters'));
     }
 
     /**
@@ -46,6 +48,7 @@ class EmployeeController extends Controller
             'email' => 'required|email|unique:users',
             'role' => 'required|string|max:255',
             'password' => 'required|min:6',
+            'counter_id' => 'required|integer',
         ]);
 
         $departments = $request->only([
@@ -57,6 +60,7 @@ class EmployeeController extends Controller
         $user->name = $validatedData['name'];
         $user->email = $validatedData['email'];
         $user->role = $validatedData['role'];
+        $user->counter = $validatedData['counter_id'];
         $user->password = bcrypt($validatedData['password']);
         $user->save();
 

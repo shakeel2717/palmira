@@ -1,8 +1,6 @@
 <?php
 
-use App\Http\Controllers\user\CustomerController;
-use App\Http\Controllers\user\SellerController;
-use App\Http\Controllers\user\TransactionController;
+use App\Http\Controllers\user\TokenController;
 use App\Http\Controllers\user\UserDashboardController;
 use Illuminate\Support\Facades\Route;
 
@@ -12,6 +10,7 @@ Route::redirect('/user/dashboard', '/user/dashboard/index', 301);
 
 Route::prefix('user/dashboard')->name('user.')->middleware(['auth', 'user'])->group(function () {
     Route::get('/index', [UserDashboardController::class, 'index'])->name('dashboard');
+    Route::resource('token', TokenController::class);
 });
 
 

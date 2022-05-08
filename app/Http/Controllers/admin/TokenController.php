@@ -7,6 +7,7 @@ use App\Models\admin\Counter;
 use App\Models\admin\CounterDepartment;
 use App\Models\admin\Token;
 use App\Models\Department;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class TokenController extends Controller
@@ -34,15 +35,23 @@ class TokenController extends Controller
         $countersDepartment = CounterDepartment::where('department_id', $department->id)->get();
         foreach ($countersDepartment as $countDepart) {
             if ($countDepart->counter->status == 'active') {
-                // free active counter found
-                // assign this token to this counter
-                $token->counter_id = $countDepart->counter->id;
-                $token->save();
-                // update the counter status to busy
-                $countDepart->counter->status = 'busy';
-                $countDepart->counter->save();
+                // checking if this counter has a user
+                $userCounter = User::where('counter', $countDepart->counter->id)->first();
+                if ($userCounter) {
+                    // free active counter found
+                    // assign this token to this counter
+                    $token->counter_id = $countDepart->counter->id;
+                    $token->save();
+                    // update the counter status to busy
+                    $countDepart->counter->status = 'busy';
+                    $countDepart->counter->save();
 
-                break;
+                    break;
+                } else {
+                    return redirect()->back()->withErrors('No user found in this counter');
+                }
+            } elseif ($countDepart->counter->status == 'busy') {
+                return redirect()->back()->withErrors('This Employee Already busy in another Token');
             }
         }
 

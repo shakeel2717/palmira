@@ -3,12 +3,17 @@
 namespace App\Http\Controllers\user;
 
 use App\Http\Controllers\Controller;
+use App\Models\admin\Counter;
+use App\Models\admin\Token;
 use Illuminate\Http\Request;
 
 class UserDashboardController extends Controller
 {
     public function index()
     {
-        return view('user.dashboard.index');
+        $counter = Counter::find(auth()->user()->counter);
+        // checking token for this counter
+        $token = Token::where('counter_id', auth()->user()->counter)->where('status','open')->first();
+        return view('user.dashboard.index',compact('counter','token'));
     }
 }

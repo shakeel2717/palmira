@@ -89,40 +89,41 @@
                     <table id="exportDatatable"
                         class="js-datatable table table-borderless table-thead-bordered table-nowrap table-align-middle card-table"
                         data-hs-datatables-options='{
-                                    "dom": "Bfrtip",
-                                    "buttons": [
-                                    {
-                                        "extend": "copy",
-                                        "className": "d-none"
-                                    },
-                                    {
-                                        "extend": "excel",
-                                        "className": "d-none"
-                                    },
-                                    {
-                                        "extend": "csv",
-                                        "className": "d-none"
-                                    },
-                                    {
-                                        "extend": "pdf",
-                                        "className": "d-none"
-                                    },
-                                    {
-                                        "extend": "print",
-                                        "className": "d-none"
-                                    }
-                                    ],
-                                    "order": [],
-            "search": "#datatableWithSearchInput",
-            "isResponsive": false,
-            "isShowPaging": false,
-            "pagination": "datatableWithSearchPagination"
+                                            "dom": "Bfrtip",
+                                            "buttons": [
+                                            {
+                                                "extend": "copy",
+                                                "className": "d-none"
+                                            },
+                                            {
+                                                "extend": "excel",
+                                                "className": "d-none"
+                                            },
+                                            {
+                                                "extend": "csv",
+                                                "className": "d-none"
+                                            },
+                                            {
+                                                "extend": "pdf",
+                                                "className": "d-none"
+                                            },
+                                            {
+                                                "extend": "print",
+                                                "className": "d-none"
+                                            }
+                                            ],
+                                            "order": [],
+                    "search": "#datatableWithSearchInput",
+                    "isResponsive": false,
+                    "isShowPaging": false,
+                    "pagination": "datatableWithSearchPagination"
 
-                                }'>
+                                        }'>
                         <thead class="thead-light">
                             <tr>
                                 <th>Name</th>
                                 <th>Email</th>
+                                <th>Counter #</th>
                                 <th>Role</th>
                                 <th>Status</th>
                             </tr>
@@ -139,6 +140,7 @@
                                         </div>
                                     </td>
                                     <td>{{ $employee->email }}</td>
+                                    <td>{{ $employee->counter }}</td>
                                     <td>{{ $employee->role }}</td>
                                     <td class="text-uppercase">{{ $employee->status }}</td>
                                 </tr>

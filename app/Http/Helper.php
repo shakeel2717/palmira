@@ -24,3 +24,9 @@ function generate_token()
         return $token;
     }
 }
+
+function getActiveToken()
+{
+    $token = Token::where('counter_id', auth()->user()->counter)->where('status','open')->first();
+    return $token;
+}

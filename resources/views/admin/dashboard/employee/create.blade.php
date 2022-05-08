@@ -45,21 +45,33 @@
                             </select>
                         </div>
                         <div class="form-group text-start mb-2">
+                            <label for="counter_id" class="mb-2">Counter #</label>
+                            <select name="counter_id" id="counter_id" class="form-control">
+                                @foreach ($counters as $counter)
+                                    <option value="{{ $counter->id }}">{{ $counter->name }} |
+                                        {{ $counter->description }}
+                                    </option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <div class="form-group text-start mb-2">
                             <label for="password" class="mb-2">User Control</label>
                             <div class="row gx-3">
                                 <!-- Check -->
                                 @foreach ($departments as $department)
-                                <div class="col-6">
-                                    <div class="form-check form-check-label-highlighter text-center">
-                                        <input type="checkbox" class="form-check-input" name="department_{{ $department->id }}"
-                                            id="department_{{ $department->id }}" value="{{ $department->id }}">
-                                        <label class="form-check-label mb-2" for="department_{{ $department->id }}">
-                                            <img class="form-check-img" src="{{ asset('departments/' . $department->image) }}"
-                                                alt="Image Description">
-                                        </label>
-                                        <span class="form-check-text">{{ $department->name }}</span>
+                                    <div class="col-6">
+                                        <div class="form-check form-check-label-highlighter text-center">
+                                            <input type="checkbox" class="form-check-input"
+                                                name="department_{{ $department->id }}"
+                                                id="department_{{ $department->id }}" value="{{ $department->id }}">
+                                            <label class="form-check-label mb-2" for="department_{{ $department->id }}">
+                                                <img class="form-check-img"
+                                                    src="{{ asset('departments/' . $department->image) }}"
+                                                    alt="Image Description">
+                                            </label>
+                                            <span class="form-check-text">{{ $department->name }}</span>
+                                        </div>
                                     </div>
-                                </div>
                                 @endforeach
                                 <!-- End Check -->
 

@@ -324,24 +324,6 @@
                         </div>
 
                         <div class="nav-item">
-                            <a class="nav-link dropdown-toggle " href="#navEmployee" role="button"
-                                data-bs-toggle="collapse" data-bs-target="#navEmployee" aria-expanded="false"
-                                aria-controls="navEmployee">
-                                <i class="bi-house-door nav-icon"></i>
-                                <span class="nav-link-title">Employee</span>
-                            </a>
-
-                            <div id="navEmployee" class="nav-collapse collapse" data-bs-parent="#navbarVerticalMenu">
-                                <a class="nav-link " href="{{ route('admin.employee.create') }}">Add Employee</a>
-                            </div>
-
-                            <div id="navEmployee" class="nav-collapse collapse" data-bs-parent="#navbarVerticalMenu">
-                                <a class="nav-link " href="{{ route('admin.employee.index') }}">All Employee</a>
-                            </div>
-                        </div>
-
-
-                        <div class="nav-item">
                             <a class="nav-link dropdown-toggle " href="#navToken" role="button"
                                 data-bs-toggle="collapse" data-bs-target="#navCounter" aria-expanded="false"
                                 aria-controls="navCounter">
@@ -355,6 +337,23 @@
                             </div>
                             <div id="navCounter" class="nav-collapse collapse" data-bs-parent="#navbarVerticalMenu">
                                 <a class="nav-link " href="{{ route('admin.counter.index') }}">All Counter</a>
+                            </div>
+                        </div>
+
+                        <div class="nav-item">
+                            <a class="nav-link dropdown-toggle " href="#navEmployee" role="button"
+                                data-bs-toggle="collapse" data-bs-target="#navEmployee" aria-expanded="false"
+                                aria-controls="navEmployee">
+                                <i class="bi-house-door nav-icon"></i>
+                                <span class="nav-link-title">Employee</span>
+                            </a>
+
+                            <div id="navEmployee" class="nav-collapse collapse" data-bs-parent="#navbarVerticalMenu">
+                                <a class="nav-link " href="{{ route('admin.employee.create') }}">Add Employee</a>
+                            </div>
+
+                            <div id="navEmployee" class="nav-collapse collapse" data-bs-parent="#navbarVerticalMenu">
+                                <a class="nav-link " href="{{ route('admin.employee.index') }}">All Employee</a>
                             </div>
                         </div>
 
