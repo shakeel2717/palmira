@@ -239,9 +239,9 @@
 
                                 <div class="dropdown-divider"></div>
                                 <form action="{{ route('logout') }}" method="POST">
-                                @csrf
-                                <button class="dropdown-item" type="submit">Sign out</button>
-                            </form>
+                                    @csrf
+                                    <button class="dropdown-item" type="submit">Sign out</button>
+                                </form>
                                 {{-- <a class="dropdown-item" href="#">Sign out</a> --}}
                             </div>
                         </div>
@@ -313,6 +313,11 @@
                             </a>
 
                             <div id="navCustomers" class="nav-collapse collapse" data-bs-parent="#navbarVerticalMenu">
+                                <a class="nav-link " href="{{ route('admin.department.create') }}">Add
+                                    Departments</a>
+                            </div>
+
+                            <div id="navCustomers" class="nav-collapse collapse" data-bs-parent="#navbarVerticalMenu">
                                 <a class="nav-link " href="{{ route('admin.department.index') }}">All
                                     Departments</a>
                             </div>
@@ -327,10 +332,31 @@
                             </a>
 
                             <div id="navEmployee" class="nav-collapse collapse" data-bs-parent="#navbarVerticalMenu">
+                                <a class="nav-link " href="{{ route('admin.employee.create') }}">Add Employee</a>
+                            </div>
+
+                            <div id="navEmployee" class="nav-collapse collapse" data-bs-parent="#navbarVerticalMenu">
                                 <a class="nav-link " href="{{ route('admin.employee.index') }}">All Employee</a>
                             </div>
                         </div>
 
+
+                        <div class="nav-item">
+                            <a class="nav-link dropdown-toggle " href="#navToken" role="button"
+                                data-bs-toggle="collapse" data-bs-target="#navCounter" aria-expanded="false"
+                                aria-controls="navCounter">
+                                <i class="bi-house-door nav-icon"></i>
+                                <span class="nav-link-title">Counters</span>
+                            </a>
+
+                            <div id="navCounter" class="nav-collapse collapse" data-bs-parent="#navbarVerticalMenu">
+                                <a class="nav-link " href="{{ route('admin.counter.create') }}">Add new
+                                    Counter</a>
+                            </div>
+                            <div id="navCounter" class="nav-collapse collapse" data-bs-parent="#navbarVerticalMenu">
+                                <a class="nav-link " href="{{ route('admin.counter.index') }}">All Counter</a>
+                            </div>
+                        </div>
 
                         <div class="nav-item">
                             <a class="nav-link dropdown-toggle " href="#navToken" role="button"

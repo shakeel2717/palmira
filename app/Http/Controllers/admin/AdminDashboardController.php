@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\admin\Counter;
 use App\Models\admin\Token;
 use App\Models\Department;
 use App\Models\User;
@@ -15,6 +16,7 @@ class AdminDashboardController extends Controller
         $employees = User::get();
         $departments = Department::get();
         $tokens = Token::get();
-        return view('admin.dashboard.index', compact('employees', 'departments', 'tokens'));
+        $counters = Counter::get();
+        return view('admin.dashboard.index', compact('employees', 'departments', 'tokens', 'counters'));
     }
 }
