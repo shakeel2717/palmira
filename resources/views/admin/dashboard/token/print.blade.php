@@ -18,9 +18,9 @@
         }
 
         .page {
-            width: 210mm;
-            min-height: 297mm;
-            padding: 20mm;
+            width: 80mm;
+            max-height: 95mm;
+            padding: 5px;
             margin: 10mm auto;
             /* border: 1px #D3D3D3 solid; */
             border-radius: 5px;
@@ -65,8 +65,12 @@
         }
 
         .display-1 {
-            font-size: 6rem;
+            font-size: 50px;
             line-height: 5px;
+        }
+
+        .display-2 {
+            font-size: 15px;
         }
 
     </style>
@@ -77,7 +81,7 @@
         <div class="page">
             <div class="subpage">
                 <div class="title">
-                    <h1 class="text-center">{{ env('APP_NAME') }}</h1>
+                    <h1 class="text-center display-2">{{ env('APP_NAME') }}</h1>
                     <h1 class="text-center display-1">{{ $token->token }}</h1>
                     <h3 class="text-center">Department: {{ $department->name }}</h3>
                     <h3 class="text-center">Date: {{ now() }}</h3>
@@ -90,8 +94,12 @@
     </div>
 
 </body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script>
     // open print dialog with the A4 page size
-    window.print();
+    $(document).ready(function() {
+        window.print();
+    });
 </script>
+
 </html>

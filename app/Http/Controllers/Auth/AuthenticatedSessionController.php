@@ -35,11 +35,13 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerate();
 
-        $counter = Counter::find(auth()->user()->counter);
-        if ($counter->status == 'offline') {
-            $counter->status = 'active';
+        if (auth()->user()->role != 'admin') {
+            $counter = Counter::find(auth()->user()->counter);
+            if ($counter->status == 'offline') {
+                $counter->status = 'active';
+            }
+            $counter->save();
         }
-        $counter->save();
 
         return redirect()->intended(RouteServiceProvider::HOME);
     }
@@ -52,11 +54,13 @@ class AuthenticatedSessionController extends Controller
      */
     public function destroy(Request $request)
     {
-        $counter = Counter::find(auth()->user()->counter);
-        if ($counter->status == 'active') {
-            $counter->status = 'offline';
+        if (auth()->user()->role != 'admin') {
+            $counter = Counter::find(auth()->user()->counter);
+            if ($counter->status == 'active') {
+                $counter->status = 'offline';
+            }
+            $counter->save();
         }
-        $counter->save();
         Auth::guard('web')->logout();
 
         $request->session()->invalidate();
