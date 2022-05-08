@@ -17,6 +17,7 @@ class AdminDashboardController extends Controller
         $departments = Department::get();
         $tokens = Token::get();
         $counters = Counter::get();
+        return generate_token();
         return view('admin.dashboard.index', compact('employees', 'departments', 'tokens', 'counters'));
     }
 }

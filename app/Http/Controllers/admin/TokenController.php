@@ -24,10 +24,9 @@ class TokenController extends Controller
     {
         $department = Department::find($department);
         // generating a random token
-        $generateToken = generate_token();
         // creating new token
         $token = new Token();
-        $token->token = $generateToken;
+        $token->token = generate_token();
         $token->department_id = $department->id;
         $token->save();
 
@@ -75,7 +74,9 @@ class TokenController extends Controller
      */
     public function edit($id)
     {
-        //
+        $token = Token::find($id);
+        $departments = Department::all();
+        return view('admin.dashboard.token.edit', compact('token', 'departments'));
     }
 
     /**
@@ -87,7 +88,19 @@ class TokenController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $validatedData = $request->validate([
+            'token' => 'required|unique:tokens',
+            'department_id' => 'required',
+            'status' => 'required',
+        ]);
+
+        $token = Token::find($id);
+        $token->token = $validatedData['token'];
+        $token->department_id = $request->department_id;
+        $token->status = $validatedData['status'];
+        $token->save();
+
+        return redirect()->route('admin.token.index')->with('success', 'Token updated successfully');
     }
 
     /**

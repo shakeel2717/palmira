@@ -3,8 +3,6 @@
 
 use App\Models\admin\Token;
 use App\Models\options;
-use App\Models\User;
-use App\Models\user\Customer;
 
 function generate_token()
 {
@@ -12,5 +10,17 @@ function generate_token()
     $option->value = $option->value + 1;
     $length = $option->value;
     $option->save();
-    return sprintf('%05d', $length++);
+    $token = sprintf('%05d', $length++);
+    // chekcing if this token already exist
+    $check = Token::where('token', $token)->first();
+    if ($check) {
+        $option = options::where('name', 'token_length')->first();
+        $option->value = $option->value + 1;
+        $length = $option->value;
+        $option->save();
+        $token = sprintf('%05d', $length++);
+        return $token;
+    } else {
+        return $token;
+    }
 }
