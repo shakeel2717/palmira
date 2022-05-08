@@ -15,6 +15,7 @@ return new class extends Migration
     {
         Schema::create('counters', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('department_id')->constrained()->onDelete('cascade');
             $table->string('name');
             $table->string('description');
             $table->string('status')->default('active');

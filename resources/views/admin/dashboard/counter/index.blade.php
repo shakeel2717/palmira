@@ -121,6 +121,7 @@
                                 }'>
                         <thead class="thead-light">
                             <tr>
+                                <th>Department</th>
                                 <th>Name</th>
                                 <th>Description</th>
                             </tr>
@@ -129,6 +130,7 @@
                         <tbody>
                             @foreach ($counters as $counter)
                                 <tr>
+                                    <td class="text-uppercase">{{ $counter->department->name }}</td>
                                     <td>
                                         <div class="ms-3">
                                             <span class="d-block h5 text-inherit mb-0"><a

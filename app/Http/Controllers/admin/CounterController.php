@@ -4,6 +4,7 @@ namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\admin\Counter;
+use App\Models\Department;
 use Illuminate\Http\Request;
 
 class CounterController extends Controller
@@ -26,7 +27,8 @@ class CounterController extends Controller
      */
     public function create()
     {
-        return view('admin.dashboard.counter.create');
+        $departments = Department::all();
+        return view('admin.dashboard.counter.create', compact('departments'));
     }
 
     /**
@@ -40,9 +42,11 @@ class CounterController extends Controller
         $validatedData = $request->validate([
             'name' => 'required|unique:counters',
             'description' => 'required',
+            'department_id' => 'required',
         ]);
 
         $counter = new Counter();
+        $counter->department_id = $validatedData['department_id'];
         $counter->name = $validatedData['name'];
         $counter->description = $validatedData['description'];
         $counter->status = 'active';
