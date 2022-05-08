@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\admin\Counter;
 use App\Models\admin\Token;
 use App\Models\Department;
 use Illuminate\Http\Request;
@@ -28,6 +29,9 @@ class TokenController extends Controller
         $token = new Token();
         $token->token = generate_token();
         $token->department_id = $department->id;
+        // checking all counters in this department
+        $counters = Counter::where('department_id', $department->id)->first();
+        $token->counter_id = $counters->id;
         $token->save();
 
         return view('admin.dashboard.token.print', compact('token', 'department'));
@@ -76,7 +80,8 @@ class TokenController extends Controller
     {
         $token = Token::find($id);
         $departments = Department::all();
-        return view('admin.dashboard.token.edit', compact('token', 'departments'));
+        $counters = Counter::all();
+        return view('admin.dashboard.token.edit', compact('token', 'departments', 'counters'));
     }
 
     /**

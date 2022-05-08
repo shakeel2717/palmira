@@ -34,6 +34,16 @@
                             </select>
                         </div>
                         <div class="form-group text-start mb-2">
+                            <label for="name" class="mb-2">Counter</label>
+                            <select name="counter_id" id="counter_id" class="form-control">
+                                @foreach ($counters as $counter)
+                                    <option value="{{ $counter->id }}"
+                                        @if ($counter->id == $token->counter_id) selected @endif>{{ $counter->name }}</option>
+                                @endforeach
+
+                            </select>
+                        </div>
+                        <div class="form-group text-start mb-2">
                             <label for="token" class="mb-2">Token</label>
                             <input type="text" class="form-control" id="token" name="token" placeholder="Enter Token"
                                 value="{{ $token->token }}">

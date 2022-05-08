@@ -122,6 +122,7 @@
                         <thead class="thead-light">
                             <tr>
                                 <th>Token</th>
+                                <th>Counter</th>
                                 <th>Department</th>
                                 <th>Status</th>
                             </tr>
@@ -137,6 +138,7 @@
                                             </span>
                                         </div>
                                     </td>
+                                    <td>{{ $token->counter->name }}</td>
                                     <td>{{ $token->department->name }}</td>
                                     <td class="text-uppercase">{{ $token->status }}</td>
                                 </tr>

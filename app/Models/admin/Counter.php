@@ -15,4 +15,9 @@ class Counter extends Model
     {
         return $this->belongsTo(Department::class);
     }
+
+    public function tokens()
+    {
+        return $this->hasMany(Token::class);
+    }
 }

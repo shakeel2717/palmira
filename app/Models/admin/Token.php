@@ -14,4 +14,9 @@ class Token extends Model
     {
         return $this->belongsTo(Department::class);
     }
+
+    public function counter()
+    {
+        return $this->belongsTo(Counter::class);
+    }
 }
