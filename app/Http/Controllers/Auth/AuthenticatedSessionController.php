@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Auth\LoginRequest;
+use App\Models\admin\Counter;
 use App\Models\User;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Http\Request;
@@ -34,6 +35,12 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerate();
 
+        $counter = Counter::find(auth()->user()->counter);
+        if ($counter->status == 'offline') {
+            $counter->status = 'active';
+        }
+        $counter->save();
+
         return redirect()->intended(RouteServiceProvider::HOME);
     }
 
@@ -45,6 +52,11 @@ class AuthenticatedSessionController extends Controller
      */
     public function destroy(Request $request)
     {
+        $counter = Counter::find(auth()->user()->counter);
+        if ($counter->status == 'active') {
+            $counter->status = 'offline';
+        }
+        $counter->save();
         Auth::guard('web')->logout();
 
         $request->session()->invalidate();
