@@ -9,6 +9,7 @@ use App\Models\admin\Token;
 use App\Models\Department;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 
 class TokenController extends Controller
 {
@@ -34,9 +35,12 @@ class TokenController extends Controller
         // checking the free counter in this department
         $countersDepartment = CounterDepartment::where('department_id', $department->id)->get();
         foreach ($countersDepartment as $countDepart) {
+            Log::info("First Loop Start");
             if ($countDepart->counter->status == 'active') {
+                Log::info("Active Coutner Pickup");
                 // checking if this counter has a user
                 $userCounter = User::where('counter', $countDepart->counter->id)->first();
+                Log::info($countDepart->counter->id . " Counter ID");
                 if ($userCounter) {
                     // free active counter found
                     // assign this token to this counter
@@ -46,11 +50,15 @@ class TokenController extends Controller
                     $countDepart->counter->status = 'busy';
                     $countDepart->counter->save();
 
-                    break;
-                } else {
-                    return redirect()->back()->withErrors('No user found in this counter');
+                    goto endLooping;
                 }
-            } elseif ($countDepart->counter->status == 'busy') {
+            }
+            Log::info('NO Active Counter Found, or end of the foreach loop');
+        }
+        foreach ($countersDepartment as $countDepart) {
+            Log::info("2nd Loop Start");
+            if ($countDepart->counter->status == 'busy') {
+                Log::info("Busy Counter Pickup");
                 // putting this counter in the queue
                 $userCounter = User::where('counter', $countDepart->counter->id)->first();
                 if ($userCounter) {
@@ -65,6 +73,8 @@ class TokenController extends Controller
                 }
             }
         }
+
+        endLooping:
 
         return view('admin.dashboard.token.print', compact('token', 'department'));
     }
