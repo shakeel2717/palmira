@@ -23,12 +23,28 @@
                     <form action="{{ route('admin.counter.store') }}" method="POST">
                         @csrf
                         <div class="form-group text-start mb-2">
-                            <label for="name" class="mb-2">Select Department</label>
-                            <select name="department_id" id="department_id" class="form-control">
+                            <label for="password" class="mb-2">Departments</label>
+                            <div class="row gx-3">
+                                <!-- Check -->
                                 @foreach ($departments as $department)
-                                <option value="{{ $department->id }}">{{ $department->name }}</option>
+                                    <div class="col-6">
+                                        <div class="form-check form-check-label-highlighter text-center">
+                                            <input type="checkbox" class="form-check-input"
+                                                name="department_{{ $department->id }}"
+                                                id="department_{{ $department->id }}" value="{{ $department->id }}">
+                                            <label class="form-check-label mb-2" for="department_{{ $department->id }}">
+                                                <img class="form-check-img"
+                                                    src="{{ asset('departments/' . $department->image) }}"
+                                                    alt="Image Description">
+                                            </label>
+                                            <span class="form-check-text">{{ $department->name }}</span>
+                                        </div>
+                                    </div>
                                 @endforeach
-                            </select>
+                                <!-- End Check -->
+
+                            </div>
+                            <!-- End Row -->
                         </div>
                         <div class="form-group text-start mb-2">
                             <label for="name" class="mb-2">Counter Name</label>

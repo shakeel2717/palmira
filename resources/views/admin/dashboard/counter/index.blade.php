@@ -89,36 +89,36 @@
                     <table id="exportDatatable"
                         class="js-datatable table table-borderless table-thead-bordered table-nowrap table-align-middle card-table"
                         data-hs-datatables-options='{
-                                    "dom": "Bfrtip",
-                                    "buttons": [
-                                    {
-                                        "extend": "copy",
-                                        "className": "d-none"
-                                    },
-                                    {
-                                        "extend": "excel",
-                                        "className": "d-none"
-                                    },
-                                    {
-                                        "extend": "csv",
-                                        "className": "d-none"
-                                    },
-                                    {
-                                        "extend": "pdf",
-                                        "className": "d-none"
-                                    },
-                                    {
-                                        "extend": "print",
-                                        "className": "d-none"
-                                    }
-                                    ],
-                                    "order": [],
-            "search": "#datatableWithSearchInput",
-            "isResponsive": false,
-            "isShowPaging": false,
-            "pagination": "datatableWithSearchPagination"
+                                                "dom": "Bfrtip",
+                                                "buttons": [
+                                                {
+                                                    "extend": "copy",
+                                                    "className": "d-none"
+                                                },
+                                                {
+                                                    "extend": "excel",
+                                                    "className": "d-none"
+                                                },
+                                                {
+                                                    "extend": "csv",
+                                                    "className": "d-none"
+                                                },
+                                                {
+                                                    "extend": "pdf",
+                                                    "className": "d-none"
+                                                },
+                                                {
+                                                    "extend": "print",
+                                                    "className": "d-none"
+                                                }
+                                                ],
+                                                "order": [],
+                        "search": "#datatableWithSearchInput",
+                        "isResponsive": false,
+                        "isShowPaging": false,
+                        "pagination": "datatableWithSearchPagination"
 
-                                }'>
+                                            }'>
                         <thead class="thead-light">
                             <tr>
                                 <th>Name</th>
@@ -134,11 +134,17 @@
                                     <td>
                                         <div class="ms-3">
                                             <span class="d-block h5 text-inherit mb-0"><a
-                                                href="{{ route('admin.counter.edit', ['counter' => $counter->id]) }}">{{ $counter->name }}</a>
+                                                    href="{{ route('admin.counter.edit', ['counter' => $counter->id]) }}">{{ $counter->name }}</a>
                                             </span>
                                         </div>
                                     </td>
-                                    <td class="text-uppercase">{{ $counter->department->name }}</td>
+                                    <td class="text-uppercase">
+                                        @foreach ($counter->CounterDepartment as $counterDepart)
+                                            <span class="badge bg-soft-success text-success">
+                                                <span class="legend-indicator bg-success"></span>{{ $counterDepart->department->name }}
+                                            </span>
+                                        @endforeach
+                                    </td>
                                     <td>{{ $counter->description }}</td>
                                     <td class="text-uppercase">{{ $counter->status }}</td>
                                 </tr>

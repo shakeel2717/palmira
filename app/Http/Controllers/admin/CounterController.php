@@ -4,6 +4,7 @@ namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\admin\Counter;
+use App\Models\admin\CounterDepartment;
 use App\Models\Department;
 use Illuminate\Http\Request;
 
@@ -42,15 +43,29 @@ class CounterController extends Controller
         $validatedData = $request->validate([
             'name' => 'required|unique:counters',
             'description' => 'required',
-            'department_id' => 'required',
         ]);
 
         $counter = new Counter();
-        $counter->department_id = $validatedData['department_id'];
         $counter->name = $validatedData['name'];
         $counter->description = $validatedData['description'];
         $counter->status = 'active';
         $counter->save();
+
+
+        // permission management
+        $departments = $request->only([
+            'department_1', 'department_2', 'department_3', 'department_4', 'department_5', 'department_6', 'department_7', 'department_8', 'department_9', 'department_10', 'department_11', 'department_12',
+        ]);
+
+        // update or create this user
+        foreach ($departments as $depart) {
+            if ($depart != null) {
+                $department = CounterDepartment::updateOrCreate([
+                    'counter_id' => $counter->id,
+                    'department_id' => $depart,
+                ]);
+            }
+        }
 
         return redirect()->route('admin.counter.index')->with('success', 'Counter created successfully');
     }
@@ -75,7 +90,9 @@ class CounterController extends Controller
     public function edit($id)
     {
         $counter = Counter::find($id);
-        return view('admin.dashboard.counter.edit', compact('counter'));
+        $departments = Department::all();
+        $counter_departments = CounterDepartment::where('counter_id', $id)->get();
+        return view('admin.dashboard.counter.edit', compact('counter', 'departments', 'counter_departments'));
     }
 
     /**
@@ -88,11 +105,26 @@ class CounterController extends Controller
     public function update(Request $request, $id)
     {
         $validatedData = $request->validate([
-            'name' => 'required|unique:counters,name,'.$id,
+            'name' => 'required|unique:counters,name,' . $id,
             'description' => 'required',
         ]);
 
+
+        // permission management
+        $departments = $request->only([
+            'department_1', 'department_2', 'department_3', 'department_4', 'department_5', 'department_6', 'department_7', 'department_8', 'department_9', 'department_10', 'department_11', 'department_12',
+        ]);
+
         $counter = Counter::find($id);
+        // update or create this user
+        foreach ($departments as $depart) {
+            if ($depart != null) {
+                $department = CounterDepartment::updateOrCreate([
+                    'counter_id' => $counter->id,
+                    'department_id' => $depart,
+                ]);
+            }
+        }
         $counter->name = $validatedData['name'];
         $counter->description = $validatedData['description'];
         $counter->save();

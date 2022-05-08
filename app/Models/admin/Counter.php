@@ -20,4 +20,9 @@ class Counter extends Model
     {
         return $this->hasOne(Token::class);
     }
+
+    public function CounterDepartment()
+    {
+        return $this->hasMany(CounterDepartment::class);
+    }
 }

@@ -20,9 +20,39 @@
         <div class="col-md-8">
             <div class="card">
                 <div class="card-body">
-                    <form action="{{ route('admin.counter.update',['counter' => $counter->id]) }}" method="POST">
+                    <form action="{{ route('admin.counter.update', ['counter' => $counter->id]) }}" method="POST">
                         @csrf
                         @method('PUT')
+                        <div class="form-group text-start mb-2">
+                            <label for="password" class="mb-2">Departments
+                                @forelse ($counter_departments as $control)
+                                    <b>{{ $control->department->name }},</b>
+                                @empty
+                                    No Departments for this Counter Assigned!
+                                @endforelse
+                            </label>
+                            <div class="row gx-3">
+                                <!-- Check -->
+                                @foreach ($departments as $department)
+                                    <div class="col-6">
+                                        <div class="form-check form-check-label-highlighter text-center">
+                                            <input type="checkbox" class="form-check-input"
+                                                name="department_{{ $department->id }}"
+                                                id="department_{{ $department->id }}" value="{{ $department->id }}">
+                                            <label class="form-check-label mb-2" for="department_{{ $department->id }}">
+                                                <img class="form-check-img"
+                                                    src="{{ asset('departments/' . $department->image) }}"
+                                                    alt="Image Description">
+                                            </label>
+                                            <span class="form-check-text">{{ $department->name }}</span>
+                                        </div>
+                                    </div>
+                                @endforeach
+                                <!-- End Check -->
+
+                            </div>
+                            <!-- End Row -->
+                        </div>
                         <div class="form-group text-start mb-2">
                             <label for="name" class="mb-2">Counter Name</label>
                             <input type="text" class="form-control" id="name" name="name" placeholder="Enter Counter name"
