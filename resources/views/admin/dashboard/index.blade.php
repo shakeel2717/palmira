@@ -46,6 +46,36 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="col-lg-6">
+                            <div class="card h-100">
+                                <div class="card-body">
+                                    <h6 class="card-subtitle mb-2">Total Token</h6>
+
+                                    <div class="row align-items-center gx-2">
+                                        <div class="col">
+                                            <span class="js-counter display-4 text-dark">{{ $tokens->count() }}</span>
+                                        </div>
+                                        <!-- End Col -->
+                                    </div>
+                                    <!-- End Row -->
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="card h-100">
+                                <div class="card-body">
+                                    <h6 class="card-subtitle mb-2">Open Token</h6>
+
+                                    <div class="row align-items-center gx-2">
+                                        <div class="col">
+                                            <span class="js-counter display-4 text-dark">{{ $tokens->where('status','open')->count() }}</span>
+                                        </div>
+                                        <!-- End Col -->
+                                    </div>
+                                    <!-- End Row -->
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
