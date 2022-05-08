@@ -64,6 +64,10 @@
             text-align: center;
         }
 
+        .display-1 {
+            font-size: 6rem;
+        }
+
     </style>
 </head>
 
@@ -72,9 +76,14 @@
         <div class="page">
             <div class="subpage">
                 <div class="title">
-                    <h1 class="text-center">{{ $token->token }}</h1>
+                    <h1 class="text-center">{{ env('APP_NAME') }}</h1>
+                    <h1 class="text-center display-1">{{ $token->token }}</h1>
                     <h3 class="text-center">Department: {{ $department->name }}</h3>
                     <h3 class="text-center">Description: {{ $department->description }}</h3>
+                    <h3 class="text-center">Counter: 1</h3>
+                    <h3 class="text-center">Officer: {{ auth()->user()->name }}</h3>
+                    <h3 class="text-center">Date: {{ now() }}</h3>
+
                 </div>
                 <div class="description">
 
