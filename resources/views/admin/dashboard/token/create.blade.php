@@ -1,10 +1,14 @@
-@extends('admin.layout.app')
+@extends('admin.layout.full')
 @section('content')
     <div class="row">
         <div class="col-md-12">
             <div class="card">
-                <div class="card-header border-bottom">
+                <div class="card-header border-bottom d-flex align-items-center justify-content-between">
                     <h4 class="card-header-title">{{ env('APP_NAME') }}</h4>
+                    <div class="icon">
+                        <a href="javascript:;" onclick="toggleFullScreen()"><i class="bi bi-arrows-fullscreen"></i></a>
+
+                    </div>
                 </div>
 
                 <!-- Body -->
@@ -15,11 +19,13 @@
 
                     <div class="row">
                         @forelse ($departments as $department)
-                            <a class="card card-hover-shadow" href="{{ route('admin.token.generate',['department' => $department->id]) }}">
+                            <a class="card card-hover-shadow"
+                                href="{{ route('admin.token.generate', ['department' => $department->id]) }}">
                                 <div class="card-body">
                                     <div class="d-flex align-items-center">
                                         <div class="flex-shrink-0">
-                                            <img src="{{ asset('departments/'.$department->image) }}" alt="Department Image" width="100">
+                                            <img src="{{ asset('departments/' . $department->image) }}"
+                                                alt="Department Image" width="100">
                                         </div>
 
                                         <div class="flex-grow-1 ms-4">
@@ -48,4 +54,27 @@
             </div>
         </div>
     </div>
+    <script>
+        // full screen
+        function toggleFullScreen() {
+            var a = document.documentElement;
+            if (!document.fullscreenElement && !document.mozFullScreenElement && !document.webkitFullscreenElement) {
+                if (a.requestFullscreen) {
+                    a.requestFullscreen();
+                } else if (a.mozRequestFullScreen) {
+                    a.mozRequestFullScreen();
+                } else if (a.webkitRequestFullscreen) {
+                    a.webkitRequestFullscreen();
+                }
+            } else {
+                if (document.exitFullscreen) {
+                    document.exitFullscreen();
+                } else if (document.mozCancelFullScreen) {
+                    document.mozCancelFullScreen();
+                } else if (document.webkitExitFullscreen) {
+                    document.webkitExitFullscreen();
+                }
+            }
+        }
+    </script>
 @endsection

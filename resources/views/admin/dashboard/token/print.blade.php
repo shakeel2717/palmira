@@ -101,5 +101,12 @@
         window.print();
     });
 </script>
+<script>
+    // full screen when document ready
+    $(document).ready(function() {
+        toggleFullScreen();
+    });
+
+</script>
 
 </html>
