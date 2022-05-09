@@ -6,7 +6,8 @@
                 <!-- Body -->
                 <div class="card-body">
                     <div class="mb-4 text-center">
-                        <h3>{{ env('APP_DESC') }}</h3>
+                        <h1>{{ env('APP_DESC') }}</h1>
+                        <p>Powered By Technet Information Service</p>
                         <h3>{{ now() }}</h3>
                     </div>
                     <div class="row">
