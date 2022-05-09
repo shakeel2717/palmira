@@ -4,7 +4,7 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header border-bottom">
-                    <h4 class="card-header-title">{{ auth()->user()->name }} & Counter #{{ auth()->user()->counter }}
+                    <h4 class="card-header-title">{{ auth()->user()->name }} & Counter #{{ auth()->user()->counter->name }}
                     </h4>
                 </div>
                 <div class="card-body text-center">

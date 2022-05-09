@@ -4,12 +4,18 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Main Footer (Container) | Front - Admin &amp; Dashboard Template</title>
-    <link rel="shortcut icon" href="/favicon.ico">
+    <title>{{ env('APP_NAME') }} | {{ env('APP_DESC') }}</title>
+    <link rel="shortcut icon" href="./favicon.ico">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/assets/vendor/bootstrap-icons/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="/assets/vendor/daterangepicker/daterangepicker.css">
+    <link rel="stylesheet" href="/assets/vendor/datatables.net.extensions/fixedColumns.dataTables.min.css">
+    <link rel="stylesheet" href="/assets/vendor/datatables.net.extensions/dataTables.scroller.min.css">
+    <link rel="stylesheet" href="/assets/vendor/tom-select/dist/css/tom-select.bootstrap5.css">
     <link rel="preload" href="/assets/css/theme.min.css" data-hs-appearance="default" as="style">
+    <link rel="preload" href="/assets/css/docs.min.css" data-hs-appearance="default" as="style">
     <link rel="preload" href="/assets/css/theme-dark.min.css" data-hs-appearance="dark" as="style">
+
     <style data-hs-appearance-onload-styles>
         * {
             transition: unset !important;

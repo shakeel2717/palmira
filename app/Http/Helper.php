@@ -27,6 +27,6 @@ function generate_token()
 
 function getActiveToken()
 {
-    $token = Token::where('counter_id', auth()->user()->counter)->where('status','open')->first();
+    $token = Token::where('counter_id', auth()->user()->counter_id)->where('status','open')->first();
     return $token;
 }

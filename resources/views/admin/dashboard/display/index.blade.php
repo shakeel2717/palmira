@@ -1,19 +1,14 @@
-@extends('admin.layout.app')
+@extends('admin.layout.full')
 @section('content')
     <div class="row">
         <div class="col-md-12">
             <div class="card">
-                <div class="card-header border-bottom">
-                    <h1 class="card-header-title text-center">Display 01, Counter Wise Queue 1</h1>
-                </div>
-
                 <!-- Body -->
                 <div class="card-body">
                     <div class="mb-4 text-center">
                         <h3>{{ env('APP_DESC') }}</h3>
                         <h3>{{ now() }}</h3>
                     </div>
-                    <hr>
                     <div class="row">
                         @forelse ($counters as $counter)
                             <div class="col-md-6">
@@ -21,11 +16,28 @@
                                     <div class="card-body">
                                         <div class="d-flex align-items-center justify-content-between">
                                             <div class="flex-grow-2 ms-4">
-                                                <h3 class="text-white mb-1">Counter: {{ $counter->name }}</h3>
+                                                <h3 class="text-white mb-1">Counter:<span class="display-2">
+                                                        {{ $counter->name }}</span></h3>
                                             </div>
-                                            <div class="flex-grow-2 ms-4">
-                                                <h3 class="text-white mb-1">Token: {{ $counter->tokens->token }}</h3>
-                                            </div>
+                                            @php
+                                                $queue = DB::table('tokens')
+                                                    ->where('status', '=', 'open')
+                                                    ->where('counter_id', $counter->id)
+                                                    ->first();
+                                            @endphp
+                                            @if ($queue != '')
+                                                <div class="flex-grow-2 ms-4">
+                                                    <h3 class="text-white mb-1">Token:<span class="display-2">
+                                                            {{ $queue->token }}</span>
+                                                    </h3>
+                                                </div>
+                                            @else
+                                                <div class="flex-grow-2 ms-4">
+                                                    <h3 class="text-white mb-1">Token:<span class="display-2">
+                                                            ----</span>
+                                                    </h3>
+                                                </div>
+                                            @endif
                                         </div>
                                     </div>
                                 </a>

@@ -36,7 +36,7 @@ class AuthenticatedSessionController extends Controller
         $request->session()->regenerate();
 
         if (auth()->user()->role != 'admin') {
-            $counter = Counter::find(auth()->user()->counter);
+            $counter = Counter::find(auth()->user()->counter_id);
             if ($counter->status == 'offline') {
                 $counter->status = 'active';
             }
@@ -55,7 +55,7 @@ class AuthenticatedSessionController extends Controller
     public function destroy(Request $request)
     {
         if (auth()->user()->role != 'admin') {
-            $counter = Counter::find(auth()->user()->counter);
+            $counter = Counter::find(auth()->user()->counter_id);
             if ($counter->status == 'active') {
                 $counter->status = 'offline';
             }
