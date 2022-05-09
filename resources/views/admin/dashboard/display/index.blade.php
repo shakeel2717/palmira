@@ -16,7 +16,7 @@
                                     <div class="card-body">
                                         <div class="d-flex align-items-center justify-content-between">
                                             <div class="flex-grow-2 ms-4">
-                                                <h3 class="text-white mb-1">Counter:<span class="display-2">
+                                                <h3 class="text-white mb-1"><span class="display-2">
                                                         {{ $counter->name }}</span></h3>
                                             </div>
                                             @php
