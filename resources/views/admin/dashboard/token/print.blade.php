@@ -70,7 +70,7 @@
         }
 
         .display-2 {
-            font-size: 120px;
+            font-size: 45px;
         }
 
     </style>
@@ -83,8 +83,8 @@
                 <div class="title">
                     <h1 class="text-center display-2">{{ env('APP_NAME') }}</h1>
                     <h1 class="text-center display-1">{{ $token->token }}</h1>
-                    <h3 class="text-center">Department: {{ $department->name }}</h3>
-                    <h3 class="text-center">Date: {{ now() }}</h3>
+                    <h3 class="text-center display-2">Department: {{ $department->name }}</h3>
+                    <h3 class="text-center display-2">Date: {{ now() }}</h3>
                 </div>
                 <div class="description">
 
