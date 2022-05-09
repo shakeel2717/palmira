@@ -48,7 +48,6 @@ class CounterController extends Controller
         $counter = new Counter();
         $counter->name = $validatedData['name'];
         $counter->description = $validatedData['description'];
-        $counter->status = 'active';
         $counter->save();
 
 
