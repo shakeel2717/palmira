@@ -99,6 +99,10 @@
     // open print dialog with the A4 page size
     $(document).ready(function() {
         window.print();
+        // go back automatic after print done
+        setTimeout(function() {
+            window.location.href = "{{ route('admin.token.create') }}";
+        }, 1000);
     });
 </script>
 <script>
