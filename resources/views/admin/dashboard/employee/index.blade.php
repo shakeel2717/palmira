@@ -89,42 +89,42 @@
                     <table id="exportDatatable"
                         class="js-datatable table table-borderless table-thead-bordered table-nowrap table-align-middle card-table"
                         data-hs-datatables-options='{
-                                            "dom": "Bfrtip",
-                                            "buttons": [
-                                            {
-                                                "extend": "copy",
-                                                "className": "d-none"
-                                            },
-                                            {
-                                                "extend": "excel",
-                                                "className": "d-none"
-                                            },
-                                            {
-                                                "extend": "csv",
-                                                "className": "d-none"
-                                            },
-                                            {
-                                                "extend": "pdf",
-                                                "className": "d-none"
-                                            },
-                                            {
-                                                "extend": "print",
-                                                "className": "d-none"
-                                            }
-                                            ],
-                                            "order": [],
-                    "search": "#datatableWithSearchInput",
-                    "isResponsive": false,
-                    "isShowPaging": false,
-                    "pagination": "datatableWithSearchPagination"
+                                                "dom": "Bfrtip",
+                                                "buttons": [
+                                                {
+                                                    "extend": "copy",
+                                                    "className": "d-none"
+                                                },
+                                                {
+                                                    "extend": "excel",
+                                                    "className": "d-none"
+                                                },
+                                                {
+                                                    "extend": "csv",
+                                                    "className": "d-none"
+                                                },
+                                                {
+                                                    "extend": "pdf",
+                                                    "className": "d-none"
+                                                },
+                                                {
+                                                    "extend": "print",
+                                                    "className": "d-none"
+                                                }
+                                                ],
+                                                "order": [],
+                        "search": "#datatableWithSearchInput",
+                        "isResponsive": false,
+                        "isShowPaging": false,
+                        "pagination": "datatableWithSearchPagination"
 
-                                        }'>
+                                            }'>
                         <thead class="thead-light">
                             <tr>
                                 <th>Name</th>
                                 <th>Email</th>
+                                <th>Departments</th>
                                 <th>Counter #</th>
-                                <th>Role</th>
                                 <th>Status</th>
                             </tr>
                         </thead>
@@ -140,8 +140,17 @@
                                         </div>
                                     </td>
                                     <td>{{ $employee->email }}</td>
-                                    <td>{{ $employee->counter }}</td>
-                                    <td>{{ $employee->role }}</td>
+                                    <td class="text-uppercase">
+                                        @foreach ($employee->counter->CounterDepartment as $counterDepart)
+                                            <span class="badge bg-soft-success text-success">
+                                                <span class="legend-indicator bg-success"></span>{{ $counterDepart->department->name }}
+                                            </span>
+                                        @endforeach
+                                        {{-- {{ $employee->counter->CounterDepartment->department ?? "No Counter" }} --}}
+
+
+                                    </td>
+                                    <td>{{ $employee->counter->name }}</td>
                                     <td class="text-uppercase">{{ $employee->status }}</td>
                                 </tr>
                             @endforeach

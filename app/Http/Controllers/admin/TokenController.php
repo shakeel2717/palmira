@@ -39,7 +39,7 @@ class TokenController extends Controller
             if ($countDepart->counter->status == 'active') {
                 Log::info("Active Coutner Pickup");
                 // checking if this counter has a user
-                $userCounter = User::where('counter', $countDepart->counter->id)->first();
+                $userCounter = User::where('counter_id', $countDepart->counter->id)->first();
                 Log::info($countDepart->counter->id . " Counter ID");
                 if ($userCounter) {
                     // free active counter found
@@ -60,7 +60,7 @@ class TokenController extends Controller
             if ($countDepart->counter->status == 'busy') {
                 Log::info("Busy Counter Pickup");
                 // putting this counter in the queue
-                $userCounter = User::where('counter', $countDepart->counter->id)->first();
+                $userCounter = User::where('counter_id', $countDepart->counter->id)->first();
                 if ($userCounter) {
                     // free active counter found
                     // assign this token to this counter

@@ -46,34 +46,6 @@
                                 <option value="user">Employee</option>
                             </select>
                         </div>
-                        <div class="form-group text-start mb-2">
-                            <label for="password" class="mb-2">User Controls:
-                                @forelse ($departmentControl as $control)
-                                   <b>{{ $control->department->name }},</b>
-                                @empty
-                                    No Control for this user!
-                                @endforelse
-                            </label>
-                            <div class="row gx-3">
-                                <!-- Check -->
-                                @foreach ($departments as $department)
-                                <div class="col-6">
-                                    <div class="form-check form-check-label-highlighter text-center">
-                                        <input type="checkbox" class="form-check-input" name="department_{{ $department->id }}"
-                                            id="department_{{ $department->id }}" value="{{ $department->id }}">
-                                        <label class="form-check-label mb-2" for="department_{{ $department->id }}">
-                                            <img class="form-check-img" src="{{ asset('departments/' . $department->image) }}"
-                                                alt="Image Description">
-                                        </label>
-                                        <span class="form-check-text">{{ $department->name }}</span>
-                                    </div>
-                                </div>
-                                @endforeach
-                                <!-- End Check -->
-
-                            </div>
-                            <!-- End Row -->
-                        </div>
                         <hr>
                         <div class="form-group text-end mb-2">
                             <input type="submit" class="btn btn-primary" value="Update Employee Record">

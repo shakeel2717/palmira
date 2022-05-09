@@ -19,7 +19,7 @@ class EmployeeController extends Controller
      */
     public function index()
     {
-        $employees = User::get();
+        $employees = User::where('role','user')->get();
         return view('admin.dashboard.employee.index', compact('employees'));
     }
 
@@ -51,27 +51,13 @@ class EmployeeController extends Controller
             'counter_id' => 'required|integer',
         ]);
 
-        $departments = $request->only([
-            'department_1', 'department_2', 'department_3', 'department_4', 'department_5', 'department_6', 'department_7', 'department_8', 'department_9', 'department_10', 'department_11', 'department_12',
-        ]);
-
-
         $user = new User();
         $user->name = $validatedData['name'];
         $user->email = $validatedData['email'];
         $user->role = $validatedData['role'];
-        $user->counter = $validatedData['counter_id'];
+        $user->counter_id = $validatedData['counter_id'];
         $user->password = bcrypt($validatedData['password']);
         $user->save();
-
-        foreach ($departments as $depart) {
-            if ($depart != null) {
-                $department = new DepartmentControl();
-                $department->user_id = $user->id;
-                $department->department_id = $depart;
-                $department->save();
-            }
-        }
 
         return redirect()->back()->with('success', 'Employee created successfully');
     }
