@@ -7,7 +7,7 @@
                 <div class="card-body">
                     <div class="mb-4 text-center">
                         <h1>{{ env('APP_DESC') }}</h1>
-                        <p>Powered By Technet Information Service</p>
+                        <p class="text-primary">Powered By Technet Information Service</p>
                         <h3>{{ now() }}</h3>
                     </div>
                     <div class="row">
