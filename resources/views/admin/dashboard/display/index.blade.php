@@ -73,3 +73,10 @@
         </div>
     </div>
 @endsection
+@section('footer')
+    <script>
+        setInterval(function() {
+            location.reload();
+        }, 5000);
+    </script>
+@endsection

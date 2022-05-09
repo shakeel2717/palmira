@@ -697,6 +697,7 @@
 
     <!-- JS Front -->
     <script src="/assets/js/theme.min.js"></script>
+    @yield('footer')
 
     <!-- JS Plugins Init. -->
     <script>
@@ -750,7 +751,6 @@
             })
         })()
     </script>
-
     <!-- End Style Switcher JS -->
 </body>
 
