@@ -18,8 +18,8 @@
         }
 
         .page {
-            width: 80mm;
-            max-height: 95mm;
+            width: 160mm;
+            max-height: 190mm;
             padding: 5px;
             margin: 10mm auto;
             /* border: 1px #D3D3D3 solid; */
@@ -65,12 +65,12 @@
         }
 
         .display-1 {
-            font-size: 50px;
+            font-size: 100px;
             line-height: 5px;
         }
 
         .display-2 {
-            font-size: 15px;
+            font-size: 30px;
         }
 
     </style>
