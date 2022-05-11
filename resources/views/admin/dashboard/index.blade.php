@@ -91,6 +91,21 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="col-lg-6">
+                            <div class="card h-100">
+                                <div class="card-body">
+                                    <h6 class="card-subtitle mb-2">Wash all Token</h6>
+
+                                    <div class="row align-items-center gx-2">
+                                        <div class="col">
+                                            <a href="{{ route('admin.restToken') }}" class="btn btn-primary">Reset Token</a>
+                                        </div>
+                                        <!-- End Col -->
+                                    </div>
+                                    <!-- End Row -->
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

@@ -5,10 +5,12 @@ namespace App\Http\Controllers\admin;
 use App\Http\Controllers\Controller;
 use App\Models\admin\Counter;
 use App\Models\admin\CounterDepartment;
+use App\Models\admin\notification;
 use App\Models\admin\Token;
 use App\Models\Department;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 
 class TokenController extends Controller
@@ -161,5 +163,17 @@ class TokenController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+
+    public function restToken()
+    {
+        // deleting all notifications
+        notification::truncate();
+        // delete all tokens forcely
+        DB::statement("SET foreign_key_checks=0");
+        Token::truncate();
+        DB::statement("SET foreign_key_checks=1");
+        return redirect()->route('admin.token.index')->with('success', 'All Token Deleted successfully');
     }
 }

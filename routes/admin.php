@@ -17,6 +17,8 @@ Route::prefix('admin/dashboard')->name('admin.')->middleware(['auth', 'admin'])-
     Route::resource('token', TokenController::class);
     Route::resource('counter', CounterController::class);
     Route::resource('display', DisplayController::class);
+    Route::get('restToken', [TokenController::class, 'restToken'])->name('restToken');
+
 });
 
 
