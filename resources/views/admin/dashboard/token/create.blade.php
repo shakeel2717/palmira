@@ -14,7 +14,7 @@
                 <!-- Body -->
                 <div class="card-body">
                     <div class="mb-4">
-                        <p>{{ env('APP_DESC') }}</p>
+                        <p>{{ env('APP_DESC') }} | Powered By <b>Technet 055 449 6963</b></p>
                     </div>
 
                     <div class="row">
