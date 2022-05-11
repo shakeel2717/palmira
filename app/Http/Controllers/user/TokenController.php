@@ -4,6 +4,7 @@ namespace App\Http\Controllers\user;
 
 use App\Http\Controllers\Controller;
 use App\Models\admin\Counter;
+use App\Models\admin\notification;
 use App\Models\admin\Token;
 use Illuminate\Http\Request;
 
@@ -63,6 +64,7 @@ class TokenController extends Controller
         $token->status = 'complete';
         $token->save();
 
+
         $counter = Counter::find(auth()->user()->counter_id);
         $counter->status = 'active';
 
@@ -76,6 +78,13 @@ class TokenController extends Controller
         }
 
         $counter->save();
+
+        // generating Beep
+        $beep = new notification();
+        $beep->user_id = auth()->user()->id;
+        $beep->token_id = auth()->user()->counter->id;
+        $beep->is_read = true;
+        $beep->save();
 
         return redirect()->back()->with('success', 'Token has been Completed successfully');
     }

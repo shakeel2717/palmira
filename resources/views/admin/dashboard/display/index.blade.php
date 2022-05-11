@@ -79,5 +79,10 @@
         setInterval(function() {
             location.reload();
         }, 5000);
+
+        @if ($notification == true)
+            var audio = new Audio('/assets/audio/final.mp3');
+            audio.play();
+        @endif
     </script>
 @endsection

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\admin\Counter;
+use App\Models\admin\notification;
 use Illuminate\Http\Request;
 
 class DisplayController extends Controller
@@ -16,7 +17,15 @@ class DisplayController extends Controller
     public function index()
     {
         $counters = Counter::get();
-        return view('admin.dashboard.display.index', compact('counters'));
+        // checkin if there's any notification not yet read
+        $notification = notification::where('is_read', true)->first();
+        if ($notification) {
+            $notification->is_read = false;
+            $notification->save();
+        } else {
+            $notification = null;
+        }
+        return view('admin.dashboard.display.index', compact('counters', 'notification'));
     }
 
     /**
