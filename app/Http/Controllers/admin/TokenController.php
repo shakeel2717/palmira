@@ -8,6 +8,7 @@ use App\Models\admin\CounterDepartment;
 use App\Models\admin\notification;
 use App\Models\admin\Token;
 use App\Models\Department;
+use App\Models\options;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -174,6 +175,11 @@ class TokenController extends Controller
         DB::statement("SET foreign_key_checks=0");
         Token::truncate();
         DB::statement("SET foreign_key_checks=1");
+
+        // reseting the options token value
+        $option = options::where('name','token_length')->first();
+        $option->value = 1;
+        $option->save();
         return redirect()->route('admin.token.index')->with('success', 'All Token Deleted successfully');
     }
 }
