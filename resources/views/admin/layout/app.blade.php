@@ -211,7 +211,7 @@
                                 data-bs-toggle="dropdown" aria-expanded="false" data-bs-auto-close="outside"
                                 data-bs-dropdown-animation>
                                 <div class="avatar avatar-sm avatar-circle">
-                                    <img class="avatar-img" src="/assets/img/160x160/img6.jpg"
+                                    <img class="avatar-img" src="/assets/img/160x160/user.jpg"
                                         alt="Image Description">
                                     <span class="avatar-status avatar-sm-status avatar-status-success"></span>
                                 </div>
