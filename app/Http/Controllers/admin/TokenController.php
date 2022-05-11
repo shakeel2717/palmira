@@ -178,7 +178,7 @@ class TokenController extends Controller
 
         // reseting the options token value
         $option = options::where('name','token_length')->first();
-        $option->value = 1;
+        $option->value = 0;
         $option->save();
         return redirect()->route('admin.token.index')->with('success', 'All Token Deleted successfully');
     }
