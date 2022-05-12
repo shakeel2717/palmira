@@ -29,6 +29,7 @@ class TokenController extends Controller
 
     public function generate($department)
     {
+        // return getTokenQueue($department);
         $department = Department::find($department);
         // generating a random token
         // creating new token
@@ -67,7 +68,7 @@ class TokenController extends Controller
                 if ($userCounter) {
                     // free active counter found
                     // assign this token to this counter
-                    $token->counter_id = $countDepart->counter->id;
+                    $token->counter_id = getTokenQueue($department->id);
                     $token->status = 'queue';
                     $token->save();
                     break;
@@ -177,9 +178,16 @@ class TokenController extends Controller
         DB::statement("SET foreign_key_checks=1");
 
         // reseting the options token value
-        $option = options::where('name','token_length')->first();
+        $option = options::where('name', 'token_length')->first();
         $option->value = 0;
         $option->save();
+
+        // updating all counters status
+        $counters = Counter::all();
+        foreach ($counters as $counter) {
+            $counter->status = 'active';
+            $counter->save();
+        }
         return redirect()->route('admin.token.index')->with('success', 'All Token Deleted successfully');
     }
 }
